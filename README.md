@@ -209,13 +209,28 @@ Create `.env`:
     SECRET_KEY=your_jwt_secret_key
 
 ------------------------------------------------------------------------
+# Create Database
+
+Open pgAdmin4
+  Connect to server
+    Under server
+      Right click Database
+        Create -> Database
+          Name it as "chatbot_db"
+            Save
 
 # ▶️ Backend Setup
 
 ``` bash
 python -m venv venv
 venv\Scripts\activate
-pip install fastapi uvicorn pydantic python-dotenv langchain langchain-classic langchain-openai langchain-community chromadb pypdf psycopg2 python-jose[cryptography] passlib[bcrypt] pydantic[email] sqlalchemy
+
+pip install fastapi uvicorn pydantic python-dotenv 
+langchain langchain-classic langchain-openai 
+langchain-community chromadb pypdf psycopg2 langchain-chroma loguru slowapi
+python-jose[cryptography] passlib[bcrypt] 
+pydantic[email] sqlalchemy
+
 python create_tables.py
 python rag/ingest.py
 uvicorn app:app --reload
